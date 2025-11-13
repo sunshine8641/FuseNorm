@@ -1,13 +1,20 @@
 
 # FuseNorm
 
-**FuseNorm** is a method for OOD detection which consists of two main components: (1) Adaptive Top-k FeatureNorm (ATF) and (2) Strong–Weak Experts Fusion framework (FuseNorm).
+**FuseNorm** is a method for OOD detection which consists of two main cåomponents: (1) Adaptive Top-k FeatureNorm (ATF) and (2) Strong–Weak Experts Fusion framework (FuseNorm).
 
 1. ATF:     Adaptive Top-k  FeatureNorm (ATF)  simultaneously performs spatial top-k selection and  channel-wise energy weighting by analyzing the intra-channel energy distribution of feature maps.
 
-![[Figs/ATF0.jpg|500]]
+<p align="center">
+  <img src="Figs/ATF0.jpg" alt="ATF Overview" width="600"/>
+</p>
+
 2. FuseNorm:  a strong–weak experts fusion framework that dynamically integrates confident cues from strong experts with complementary evidence from weaker ones in an uncertainty-aware manner
- ![[Figs/framework.jpg]]
+
+
+<p align="center">
+  <img src="Figs/framework.jpg" alt="FuseNorm Overview" width="600"/>
+</p>
 
 ## Project Structure
 
