@@ -36,6 +36,9 @@ paradigm:
 
 ## Example 
 
+
+ID: ImageNet  OOD: Places
+
 1D score distributions of each individual strong expert on ID (blue) and OOD (red). Each individual score exhibits substantial ID/OOD overlap, confirming that no single score suffices.
 
 

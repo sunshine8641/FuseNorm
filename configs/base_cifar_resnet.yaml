@@ -1,0 +1,89 @@
+exp_name: resnet18_cifar100_relu
+
+id_dataset:
+  name: cifar100
+  root: /Users/sunshine8641/Code/Data/
+
+ood_dataset:
+  name: svhn
+  root: /Users/sunshine8641/Code/Data/
+
+top_5: false
+
+model:
+  type: resnet18_cifar
+  pretrained: false
+  num_classes: 100
+  activation: relu
+  last_block_activation: relu
+
+num_classes: 100 #其他地方也得用到
+
+test_model: base_best #kd_last #kd_last #  swa_best # ood 测试目标模型所在文件夹
+
+
+
+
+# 常规训练设置
+start_epoch: 0
+epochs: 200
+lr: 0.1
+min_lr: 0
+weight_decay: 0.00005
+mixed_precision: fp16
+batch_size: 128
+num_workers: 4
+momentum: 0.9
+optimizer: SGD
+scheduler: cosine  # step cosine
+step_gamma: 0.1
+step_size: 30
+
+train_method:  base # kd  #kd # #swa
+
+#swa 设置
+use_swa : False
+swa_window: 40
+swa_start: 0
+  #swa_lr: 0.04
+
+#label smoothing 设置
+label_smooth: True
+smoothing: 0.1
+
+
+#kd 设置
+teacher:
+  type: resnet34_cifar
+  pretrained: false
+  num_classes: 100
+teacher_path:  resnet34_base.pt
+distill_alpha: 0.5
+distill_temperature: 4.0
+
+
+
+# logging 等
+log:
+  log_dir: ./logs
+  use_loguru: True
+
+# ood 参数
+#odin
+odin_temperature: 1000.0
+odin_magnitude: 0.01
+#bats
+bats_lam: 3.25   #    #    lam = 1.05 for imagenet 3.25 for cifar from official
+# LAPS
+laps_lam:  1.5
+laps_m: 13
+laps_n: 0
+
+# feature_norm
+num_blocks: 8
+sblock: 0
+
+
+
+#top k
+energy_k: 10
